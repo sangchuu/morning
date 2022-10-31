@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+*{margin:0; padding:0;box-sizing:border-box;}
+
+html body{font:10pt "나눔고딕"; color:#666;}
+
+img{display:block; max-width:100%;}
+
+a {text-decoration:none;color:#666; display:block;}
+a:hover {text-decoration:underline; color:#004f8a;}
+
+#layout{width:1100px; height:1200px; margin:auto; overflow:hidden; position:relative;}
+
+/*상단*/
+header{height:200px; display:flex;}
+/*상단로고*/
+header>a{margin-top:50px; margin-right:100px;}
+
+/*상단 오른쪽 메뉴들*/
+header>nav {
+	display:flex;/*부모입장*/
+	flex:1;/*자식입장*/ margin-top:50px;
+	align-items:flex-start;/*세로정렬 위로*/
+	text-align:center;/*내부 모든 컨텐츠 가로 중앙 정렬*/
+}
+/*펜션소개*/
+header>nav>a {flex:1;}
+
+/*룸 미리보기, 커뮤니티*/
+header div {flex:1; position:relative;/*서브메뉴를 위해서 position:relative 해줘야한다*/}
+
+/*메인메뉴*/
+.mainMenu{ padding:13px 0 15px 0; font-size:1.3rem; font-weight:bold; color:black;}
+
+/*메인메뉴에 마우스 대면 서브메뉴 오픈*/
+.mainMenu:hover + .subMenu{}/*display:block;하위메뉴 선택안됨*/
+.mainMenu:hover ,.mainMenu.active{background:#004f8a; color:white; text-decoration:none;}
+
+/*서브메뉴*/
+.subMenu {position:absolute;/*포지션 보였다 안보였다*/ width:100%; padding:10px; display:none;/*안보이게*/ z-index:2;
+ width:100%; padding:10px; display:none;}
+
+.subMenu a{padding:10px;}
+
+.subMenu a:hover,.active{background:dodgerblue; color:white; text-decoration:none;}
+
+#white{background:rgba(255,255,255, 0.85); height:0px; position:absolute; left:0;
+z-index:1; width:100%; box-shadow:0 1px 3px rgba(0,0,0,0.5);}
+
+/***********************************************************************/
+/*슬라이드*/
+#sliding{height:350px; position:relative; overflow:hidden;}
+
+#sliding h1{position:absolute; background:white; padding:50px 150px;
+border-radius:20px; box-shadow:0 0 5px black; top:27%; left:25%; z-index:1;}
+
+#sliding h1 b{/*color:red;*/}
+
+/*애니메이션 부분*/
+#sliding div{display:flex; width:3300px; position:relative;/*좌표이동에 필수*/}
+#sliding img{width:1100px; height:350px;}
+
+/***********************************************************************/
+/*메인*/
+main{display:flex; position:relative; padding-top:80px; height:500px;}
+/*메인요소의 모든 자식요소들*/
+main>*:not(#popup) {/*flex:1;1대 1대 1의 넓이, 즉 1/3의 넓이*/ }
+main>section:nth-child(1),
+main>section:nth-child(2)
+{margin-right:60px;}
+
+/*공지사항*/
+#notice{flex:1;}
+#notice h2{border-bottom:3px solid #ccc; padding-bottom:5px;}
+#notice ul{margin-top:15px; list-style-position:inside;}
+#notice li{}
+#notice li a{display:inline-block; padding:7px;}
+#notice li span {float:right;}
+
+/*협력사 컨텐츠*/
+#partner{flex:0.8;}
+#partner h2{ border-bottom:3px solid #ccc; padding-bottom:5px;
+margin-bottom:15px;}
+#partner div{display:flex; 
+ align-items:center;/*세로정렬 가운데*/
+ justify-content:center;/*가로정렬 가운데*/
+ margin-top:30px; }
+#partner section{background:gray; color:white; width:130px; height:130px; 
+border-radius:50%; padding-top:12.5%; text-align:center; letter-spacing:-0.3pt;}
+
+#partner ul{list-style-position:inside; margin-left:20px;}
+#partner ul a{display:inline-block;}
+
+/*아이콘형 컨텐츠*/
+#icons{flex:0.6; padding-top:25px;}
+#icons h2{display:none;}
+#icons div{text-align:right;}/*자식요소들을 '나'의 오른쪽에 배치*/
+#icons a{display:inline-block; margin-top:5px;}
+
+/***********************************************************************/
+#popup{position:absolute;/*main의 position:relative;의 영향을 받음*/ 
+background:white; left:20%; top:-100px;/*절대값은 플렉스기능에서 제외됨*/
+width:60%; padding:20px; border-radius:20px; box-shadow:0 0 10px black; display:none;}
+
+#popup button{float:right; margin-top:10px; padding:3px 6px;}
+
+/***********************************************************************/
+footer{height:150px; background:lightgray; padding:20px;}
+
+footer ul {display:flex; list-style:none; line-height:180%; margin-top:6px;}
+footer li{flex:1;}
+footer a{display:inline-block;}
